@@ -12,7 +12,9 @@ int main() {
         DoublyNode* tmp = (DoublyNode*)malloc(sizeof(DoublyNode));
         tmp->data = i;
         tmp->prev = NULL;
+        
         tmp->next = head;
+        head->prev = tmp;
         head = tmp;
     }
     DoublyNode* tmp = head;
