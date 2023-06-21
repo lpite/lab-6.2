@@ -1,23 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct DoublyNode {
+typedef struct Node {
     int data;
-    struct DoublyNode* next;
-    struct DoublyNode* prev;
-} DoublyNode;
+    struct Node* next;
+} Node;
 
 int main() {
-    DoublyNode* head = NULL;
+    Node* head = NULL;
     for (int i = 2; i < 50; ++i) {
-        DoublyNode* tmp = (DoublyNode*)malloc(sizeof(DoublyNode));
+        Node* tmp = (Node*)malloc(sizeof(Node));
         tmp->data = i;
-        tmp->prev = NULL;
-        
         tmp->next = head;
-        head->prev = tmp;
         head = tmp;
     }
-    DoublyNode* tmp = head;
+    Node* tmp = head;
      int maxElem = 0;
      int minElem = NULL;
      while(tmp){
@@ -32,9 +28,8 @@ int main() {
          }
         tmp=tmp->next;
     }
-    DoublyNode* newElem = (DoublyNode*)malloc(sizeof(DoublyNode));
+    Node* newElem = (Node*)malloc(sizeof(Node));
     newElem->data = maxElem*minElem;
-    newElem->prev = NULL;
     newElem->next = head;
     head = newElem;
     tmp = head;
